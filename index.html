@@ -1,15 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./dist/main.css" />
-    <title>Flattener</title>
+    <head>
+        <meta charset="UTF-8" >
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <!-- <link rel="stylesheet" href="./dist/main.css" /> -->
+    <title>Flatten</title>
+    <script src="https://d3js.org/d3.v4.js"></script>
 </head>
 
 <body>
-    <script src="./dist/main.js"></script>
-</body>
+    <div id="my_dataviz"></div>
+    <script>
+        var margin = { top: 10, right: 30, bottom: 30, left: 50 },
+                width = 1000 - margin.left - margin.right,
+                height = 1000 - margin.top - margin.bottom;
+        var svg = d3.select("#my_dataviz")
+                .append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform",
+                    "translate(" + margin.left + "," + margin.top + ")");
+        
+        d3.csv("./src/data.csv", 
+            function (d) {
+                return { date: d3.timeParse("%Y-%m-%d")(d.date), deaths: d.deaths_mean }
+            },
+            function (data) {
+                data = data.filter(function (d, i) { return i })
+        
+        var x = d3.scaleTime()
+            .domain(d3.extent(data, function (d) { return d.date; }))
+            .range([0, width]);
+        svg.append("g")
+            .attr("transform", "translate(0," + (height + 5) + ")")
+            .call(d3.axisBottom(x).ticks(5).tickSizeOuter(0));
 
+        var y = d3.scaleLinear()
+            .domain(d3.extent(data, function (d) { return +d.deaths; }))
+            .range([height, 0]);
+        svg.append("g")
+            .attr("transform", "translate(-5,0)")
+            .call(d3.axisLeft(y).tickSizeOuter(0));
+
+        svg.append("path")
+            .datum(data)
+            .attr("fill", "#69b3a2")
+            .attr("fill-opacity", .3)
+            .attr("stroke", "none")
+            .attr("d", d3.area()
+                .x(function (d) { return x(d.date) })
+                .y0(height)
+                .y1(function (d) { return y(d.deaths) })
+                )
+        svg.selectAll("myCircles")
+                .data(data)
+                .enter()
+                .append("circle")
+                .attr("fill", "red")
+                .attr("stroke", "none")
+                .attr("cx", function (d) { return x(d.date) })
+                .attr("cy", function (d) { return y(d.deaths) })
+                .attr("r", 3)
+
+        })
+    </script>
+    </body>
 </html>
