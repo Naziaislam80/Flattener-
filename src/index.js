@@ -1,1 +1,1 @@
-import * as style from './styles/index.scss';
+import * as style from './styles/index.css';
