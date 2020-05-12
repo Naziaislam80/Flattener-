@@ -13,9 +13,32 @@ display: grid;
 
 }
 
-.info {
-    display: flex;
+.info-title {
+    font-size: 80px;
+    background-color: darkseagreen;
+  align-self: center;
+  font-family: Calisto MT;
+  font-weight: bold;
+  padding: 20px;
+  display: flex;
   justify-content: center;
+  
+  letter-spacing: 5px;
+
+}
+
+.info {
+    
+    display: flex;
+    flex-direction: column;
+
+    
+  justify-content: center;
+  /* min-height: 200px;  */
+}
+.blurb {
+    justify-content: center;
+  display: flex; 
 }
 
 .discription {
@@ -23,21 +46,42 @@ display: grid;
     box-shadow: 0 10px 25px darkred;
   border: 1px solid darkred;
   background-color: white;
-  width: 400px;
-  justify-content: center;
-  display: flex;
+  width: 600px;
+  /* justify-content: center;
+  display: flex; */
+    padding: 20px;
+}
+
+.covid-img {
+  background-image: url("https://github.com/Naziaislam80/Flattener-/blob/master/src/images/covid.png");
+  min-height: 300px; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; 
+  /* display: grid;  */
 }
 
 
-
-#graphs {
+/* #graphs {
     display: flex;
     flex-direction: column;
-}
+} */
 
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+
+}
+
+.facts-title {
+    justify-content: center;
+  display: flex;
+}
+.boxes {
+  display: flex;
+  justify-content: center;  
 }
 
 .box1 {
@@ -69,3 +113,78 @@ display: grid;
   justify-content: center;
   display: flex;
 }
+
+
+body {
+  font-family: Calisto MT;
+
+}
+.graph1 {
+    padding-top: 5em;
+    padding-bottom: 5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 0% 3.5%;
+    margin-bottom: 3%;
+    border: 1px solid #dc3545;
+}
+.graph2 {
+    padding-top: 5em;
+    padding-bottom: 5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 0% 3.5%;
+    margin-bottom: 3%;
+    border: 1px solid #dc3545;
+}
+.graph3 {
+    padding-top: 5em;
+    padding-bottom: 5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 0% 3.5%;
+    margin-bottom: 3%;
+    border: 1px solid #dc3545;
+}
+
+
+.author {
+  height: 200px;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    color: black;
+    padding: 0 13%;
+    grid-gap: 9%;
+    background-color: white;
+
+} 
+
+.author-info {
+  display: grid;
+    align-self: center;
+    grid-gap: 30px;
+}
+
+.author-info-span {
+    font-size: 35px;
+      color: black;
+      letter-spacing: 2px;
+      cursor: pointer;
+}
+
+.icons {
+    justify-self: start;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 23px;
+}
+.image {
+    height: 35px
+}
+
+.image:hover {
+    transform: scale(1.2);
+  }
