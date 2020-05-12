@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"main.css","sourcesContent":[],"sourceRoot":""}
+{"version":3,"sources":["webpack:///./src/styles/index.css"],"names":[],"mappings":"AAAA;AACA;AACA;AACA,C","file":"main.css","sourcesContent":["#graphs {\n    display: flex;\n    flex-direction: column;\n}"],"sourceRoot":""}
