@@ -13,12 +13,12 @@ align-self: center;
 
 }
 
- .all-divs {
-            background-image: url('../images/social-distancing.jpg');
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
-        }
+.all-divs {
+    background-image: url('../images/social-distancing.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
 
 .facts-title > h2 {
    background-color: white;
@@ -215,16 +215,21 @@ body {
 }
 
 
+
 .author-info {
     border: solid mediumaquamarine 5px;
   box-shadow: 0 15px 30px mediumaquamarine;
    font-size: 1.5em;
-  background-color: white;
+  
   color: black;
   display: flex;
  flex-direction: column;
  text-align: center;
   padding: 30px 0 50px 0;
+   background-image: url('../images/social-distancing.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 .name {
