@@ -7,10 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <img src="./src/images/logo.png" class="header"/>
+    <!-- <div class="pic1">
+    <img src="./src/images/social-distancing2.jpg"/>
+    </div>
+    <img src="./src/images/social-distancing.jpg" class="pic2" /> -->
 
     <!-- <link rel="stylesheet" href="./dist/main.css" /> -->
     <title>Flatten</title>
     <script src="https://d3js.org/d3.v4.js"></script>
+ 
     <!-- <script src="https://d3js.org/d3.v4.js"></script>
     <script src="https://d3js.org/d3.v4.js"></script> -->
 
@@ -39,7 +44,7 @@
             <div class="facts-title"><h2>The start of social distancing...</h2></div>
                 <div class="boxes">
                 <div class="box1">
-                    <p>Education facilities closed <br/> March 18 </p>
+                    <p>Education facilities closed <br/>March 18 </p>
                 </div>
                 <div class="box2">
                     <p>Gathering restrictions <br /> March 12 </p>
@@ -53,16 +58,17 @@
             </div>
         </div>
             <div class="graph1">
-                <h2 class="graph-title">Total deaths</h2>
+                <div class="graph-title">Total deaths</div>
                 <div class="graph-blurb">
                     <h3 class="graph-desc1">31,620 COVID-19 related deaths</h3>
-                    <h3 class="graph-desc2">by August 4, 2020</h3>
+                    <h3 class="graph-desc2">projected by August 4, 2020</h3>
                 </div>
                 <div id="my_dataviz1"></div>
+                <div class="script1">
                 <script>
                     var margin = { top: 10, right: 30, bottom: 30, left: 50 },
-                            width = 500 - margin.left - margin.right,
-                            height = 500 - margin.top - margin.bottom;
+                            width = 460 - margin.left - margin.right,
+                            height = 400 - margin.top - margin.bottom;
                         var svg1 = d3.select("#my_dataviz1")
                             .append("svg")
                             .attr("width", width + margin.left + margin.right)
@@ -185,9 +191,10 @@
 
                             })
                 </script>
+                </div>
             </div>
                 <div class="graph2">
-                    <h2 class="graph-title">Daily testing and projected testing</h2>
+                    <div class="graph-title">Daily testing and projected testing</div>
                     <div id="my_dataviz2"></div>
                     <script>
                         var margin = { top: 10, right: 30, bottom: 30, left: 50 },
@@ -255,7 +262,7 @@
                     </script>
                 </div>
                 <div class="graph3">
-                    <h2 class="graph-title">Confirmed infections related to testing</h2>
+                    <div class="graph-title">Confirmed infections related to testing</div>
                 <div id="my_dataviz3"></div>
                     <script>
                         var margin = { top: 10, right: 30, bottom: 30, left: 50 },

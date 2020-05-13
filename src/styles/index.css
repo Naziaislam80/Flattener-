@@ -1,9 +1,9 @@
 .header {
 display: grid;
   grid-template-columns: repeat(2, auto);
-  padding: 2% 3%;
-  height: 100px;
-    align-self: center;
+  padding: 2% 2%;
+  height: 90px;
+align-self: center;
 
 }
 
@@ -11,6 +11,19 @@ display: grid;
   display: grid;
   grid-template-columns: 56px auto;
 
+}
+
+ .all-divs {
+            background-image: url('../images/social-distancing.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+.facts-title > h2 {
+   background-color: white;
+   display: flex;
+   margin-top: 50px;
 }
 
 .info-title {
@@ -43,8 +56,8 @@ display: grid;
 
 .discription {
     box-sizing: border-box;
-    box-shadow: 0 10px 25px darkblue;
-  border: 1px solid darkblue;
+
+  border: 5px solid darkblue;
   background-color: white;
   width: 600px;
   /* justify-content: center;
@@ -52,8 +65,7 @@ display: grid;
     padding: 20px;
 }
 
-.covid-img {
-  background-image: url("https://github.com/Naziaislam80/Flattener-/blob/master/src/images/covid.png");
+.pic1 {
   min-height: 300px; 
   background-attachment: fixed;
   background-position: center;
@@ -69,6 +81,7 @@ display: grid;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-weight: bold;
 
 }
 
@@ -79,16 +92,18 @@ display: grid;
 .boxes {
   display: flex;
   justify-content: center;
-  align-content: space-between;  
+  align-content: space-between;
+  margin-bottom: 80px;  
 }
 
 .box1 {
   box-sizing: border-box;
   border: solid mediumaquamarine 5px;
   box-shadow: 0 15px 25px mediumaquamarine;
-  width: 200px;
+  width: 220px;
   justify-content: center;
   display: flex;
+  background-color: white;
 }
 .box2 {
   border: solid mediumaquamarine 5px;
@@ -96,6 +111,7 @@ display: grid;
   width: 200px;
   justify-content: center;
   display: flex;
+  background-color: white;
 }
 .box3 {
   border: solid mediumaquamarine 5px;
@@ -103,13 +119,16 @@ display: grid;
   width: 200px;
   justify-content: center;
   display: flex;
+  background-color: white;
 }
 .box4 {
   border: solid mediumaquamarine 5px;
   box-shadow: 0 15px 25px mediumaquamarine;
-  width: 200px;
+  width: 250px;
   justify-content: center;
   display: flex;
+  
+  background-color: white;
 }
 
 
@@ -118,34 +137,52 @@ body {
 
 }
 .graph1 {
-    padding-top: 5em;
-    padding-bottom: 5em;
+     padding-top: 2em;
+    padding-bottom: 2em;
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin: 0% 3.5%;
     margin-bottom: 3%;
-    border: 1px solid #dc3545;
+    border: 3px solid #dc3545;
+    background-color: white;
+}
+
+#my_dataviz1, #my_dataviz2, #my_dataviz3  {
+    margin: 0 auto;
+
+}
+
+.svg {
+    margin: 0 auto;
+}
+.script1 {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 1000px;
 }
 .graph2 {
-    padding-top: 5em;
-    padding-bottom: 5em;
+    padding-top: 2em;
+    padding-bottom: 2em;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     margin: 0% 3.5%;
     margin-bottom: 3%;
-    border: 1px solid #dc3545;
+    border: 3px solid #dc3545;
+    background-color: white;
 }
 .graph3 {
-    padding-top: 5em;
-    padding-bottom: 5em;
+    padding-top: 2em;
+    padding-bottom: 2em;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     margin: 0% 3.5%;
     margin-bottom: 3%;
-    border: 1px solid #dc3545;
+    border: 3px solid #dc3545;
+    background-color: white;
 }
 
 .graph-title {
