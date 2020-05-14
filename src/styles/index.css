@@ -63,6 +63,7 @@ align-self: center;
   /* justify-content: center;
   display: flex; */
     padding: 20px;
+    font-weight: bold;
 }
 
 .pic1 {
