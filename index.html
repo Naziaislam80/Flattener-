@@ -3,187 +3,211 @@
 
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <img src="./src/images/logo.png" class="header"/>
+    <!-- <div class="pic1">
+    <img src="./src/images/social-distancing2.jpg"/>
+    </div>
+    <img src="./src/images/social-distancing.jpg" class="pic2" /> -->
 
     <!-- <link rel="stylesheet" href="./dist/main.css" /> -->
     <title>Flatten</title>
     <script src="https://d3js.org/d3.v4.js"></script>
+ 
+    <!-- <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://d3js.org/d3.v4.js"></script> -->
+
     <!-- <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script> -->
     <link rel="stylesheet" href="./src/styles/index.css" />
+
 </head>
 
 <body>
-    <div class="header">
+    <!-- <div class="header">
         <img src="./src/images/logo.png" />
-    </div>
-    <div class="info">
-        <div class="discription"> Covid-19.... NYC HARDEST HIT. Social distancing saves lives
-             yatta yaatta add more later. 
+    </div> -->
+    <div class="all-divs">
+        <div class="covid-img">
+            <div class="info">
+                <div class="info-title">New York</div>
+                <div class="blurb">
+                <div class="discription"> Visualizations that depict the impact of social distancing on infections/mortality and graphically represent New York's overall testing capacity.
+                     
+                </div>
+                </div>
+            </div>
         </div>
-
-    </div>
-    <div class="container">
-        <h2>The start</h2>
-        <div class="box1">
-            <p>Education facilities closed <br/> March 18 </p>
-
+        <div class="container">
+            <!-- <h2>The start</h2> -->
+            <div class="facts-title"><h2>The start of social distancing...</h2></div>
+                <div class="boxes">
+                <div class="box1">
+                    <p>Education facilities closed <br/>March 18 </p>
+                </div>
+                <div class="box2">
+                    <p>Gathering restrictions <br /> March 12 </p>
+                </div>
+                <div class="box3">
+                    <p>Stay at home order <br /> March 22 </p>
+                </div>
+                <div class="box4">
+                    <p>Non-essential business closure <br /> March 22 </p>
+                </div>
+            </div>
         </div>
-        <div class="box2">
-            <p>Gathering restrictions <br /> March 12 </p>
-        
-        </div>
-        <div class="box3">
-            <p>Stay at home order <br /> March 22 </p>
-        
-        </div>
-        <div class="box4">
-            <p>Non-essential business closure <br /> March 22 </p>
-        
-        </div>
+            <div class="graph1">
+                <div class="graph-title">Total deaths</div>
+                <div class="graph-blurb">
+                    <h3 class="graph-desc1">31,620 COVID-19 related deaths</h3>
+                    <h3 class="graph-desc2">projected by August 4, 2020</h3>
+                </div>
+                <div id="my_dataviz1"></div>
+                <div class="script1">
+                <script>
+                    var margin = { top: 10, right: 30, bottom: 30, left: 50 },
+                            width = 460 - margin.left - margin.right,
+                            height = 400 - margin.top - margin.bottom;
+                        var svg1 = d3.select("#my_dataviz1")
+                            .append("svg")
+                            .attr("width", width + margin.left + margin.right)
+                            .attr("height", height + margin.top + margin.bottom)
+                            .append("g")
+                            .attr("transform",
+                                "translate(" + margin.left + "," + margin.top + ")");
 
-    </div>
+                        d3.csv("./src/data.csv",
+                            function (d) {
+                                return { date: d3.timeParse("%Y-%m-%d")(d.date), deaths: d.deaths_mean }
+                            },
+                            function (data) {
+                                data = data.filter(function (d, i) { return i })
 
+                                var x = d3.scaleTime()
+                                    .domain(d3.extent(data, function (d) { return d.date; }))
+                                    .range([0, width]);
+                                xAxis = svg1.append("g")
+                                    .attr("transform", "translate(0," + (height + 5) + ")")
+                                    .call(d3.axisBottom(x).ticks(5).tickSizeOuter(0));
 
-    <div id="my_dataviz"></div>
-    <div id="graphs">
-    <script>
-        var margin = { top: 10, right: 30, bottom: 30, left: 50 },
-            width = 460 - margin.left - margin.right,
-            height = 460 - margin.top - margin.bottom;
-        var svg = d3.select("#my_dataviz")
-            .append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
-            .append("g")
-            .attr("transform",
-                "translate(" + margin.left + "," + margin.top + ")");
-
-        d3.csv("./src/data.csv",
-            function (d) {
-                return { date: d3.timeParse("%Y-%m-%d")(d.date), deaths: d.deaths_mean }
-            },
-            function (data) {
-                // data = data.filter(function (d, i) { return i })
-
-                var x = d3.scaleTime()
-                    .domain(d3.extent(data, function (d) { return d.date; }))
-                    .range([0, width]);
-                xAxis = svg.append("g")
-                    .attr("transform", "translate(0," + (height + 5) + ")")
-                    .call(d3.axisBottom(x).ticks(5).tickSizeOuter(0));
-
-                var y = d3.scaleLinear()
-                    .domain(d3.extent(data, function (d) { return +d.deaths; }))
-                    .range([height, 0]);
-                yAxis = svg.append("g")
-                     .attr("transform", "translate(-5,0)")
-                    .call(d3.axisLeft(y).tickSizeOuter(0));
+                                var y = d3.scaleLinear()
+                                    .domain(d3.extent(data, function (d) { return +d.deaths; }))
+                                    .range([height, 0]);
+                                yAxis = svg1.append("g")
+                                    .attr("transform", "translate(-5,0)")
+                                    .call(d3.axisLeft(y).tickSizeOuter(0));
 
 
-                var clip = svg.append("defs").append("svg:clipPath")
-                    .attr("id", "clip")
-                    .append("svg:rect")
-                    .attr("width", width)
-                    .attr("height", height)
-                    .attr("x", 0)
-                    .attr("y", 0);
 
-                var brush = d3.brushX()  
-                    .extent([[0, 0], [width, height]])
-                    .on("end", updateChart) 
-                
-                    var area = svg.append('g')
-                    .attr("clip-path", "url(#clip)")
+                                var clip = svg1.append("defs").append("svg:clipPath")
+                                    .attr("id", "clip")
+                                    .append("svg:rect")
+                                    .attr("width", width)
+                                    .attr("height", height)
+                                    .attr("x", 0)
+                                    .attr("y", 0);
 
-                // Create an area generator
-                var areaGenerator = d3.area()
-                    .x(function (d) { return x(d.date) })
-                    .y0(y(0))
-                    .y1(function (d) { return y(d.deaths) })        
+                                var brush = d3.brushX()
+                                    .extent([[0, 0], [width, height]])
+                                    .on("end", updateChart)
+
+                                var area = svg1.append('g')
+                                    .attr("clip-path", "url(#clip)")
+
+                                // Create an area generator
+                                var areaGenerator = d3.area()
+                                    .x(function (d) { return x(d.date) })
+                                    .y0(y(0))
+                                    .y1(function (d) { return y(d.deaths) })
 
 
-                area.append("path")
-                    .datum(data)
-                    .attr("class", "myArea")
-                    .attr("fill", "#69b3a2")
-                    .attr("fill-opacity", .3)
-                    .attr("stroke", "black")
-                    .attr("stroke-width", 1)
-                    .attr("d", areaGenerator)
-                    // .attr("d", d3.area()
-                    //     .x(function (d) { return x(d.date) })
-                    //     .y0(height)
-                    //     .y1(function (d) { return y(d.deaths) })
-                        
-                    // )
+                                area.append("path")
+                                    .datum(data)
+                                    .attr("class", "myArea")
+                                    .attr("fill", "#69b3a2")
+                                    .attr("fill-opacity", .3)
+                                    .attr("stroke", "black")
+                                    .attr("stroke-width", 1)
+                                    .attr("d", areaGenerator)
+                                // .attr("d", d3.area()
+                                //     .x(function (d) { return x(d.date) })
+                                //     .y0(height)
+                                //     .y1(function (d) { return y(d.deaths) })
 
-                area
-                    .append("g")
-                    .attr("class", "brush")
-                    .call(brush);
-                
-                 var idleTimeout
-                function idled() { idleTimeout = null; }
+                                // )
+                                // .attr("d", d3.line()
+                                //         .x(function (d) { return x(d.date) })
+                                //         .y(function (d) { return y(d.deaths) })
+                                //     )
+                                
+                                area
+                                    .append("g")
+                                    .attr("class", "brush")
+                                    .call(brush);
 
-                 function updateChart() {
-                     extent = d3.event.selection
-                       if (!extent) {
-                         if (!idleTimeout) return idleTimeout = setTimeout(idled, 350); 
-                         x.domain([4, 8])
-                     } else {
-                         x.domain([x.invert(extent[0]), x.invert(extent[1])])
-                         area.select(".brush").call(brush.move, null) // This remove the grey brush area as soon as the selection has been done
-                     }
+                                var idleTimeout
+                                function idled() { idleTimeout = null; }
 
-                    xAxis.transition().duration(1000).call(d3.axisBottom(x))
-                     area
-                         .select('.myArea')
-                         .transition()
-                         .duration(1000)
-                         .attr("d", areaGenerator)
-                 }
-               
-                
-                // svg.selectAll("myCircles")
-                //     .data(data)
-                //     .enter()
-                //     .append("circle")
-                //     .attr("fill", "red")
-                //     .attr("stroke", "none")
-                //     .attr("cx", function (d) { return x(d.date) })
-                //     .attr("cy", function (d) { return y(d.deaths) })
-                //     .attr("r", 3)
-                       
-                    
-                    
-                svg.on("dblclick", function () {
-                    x.domain(d3.extent(data, function (d) { return d.date; }))
-                    xAxis.transition().call(d3.axisBottom(x))
-                    area
-                        .select('.myArea')
-                        .transition()
-                        .attr("d", areaGenerator)
-                });
+                                function updateChart() {
+                                    extent = d3.event.selection
+                                    if (!extent) {
+                                        if (!idleTimeout) return idleTimeout = setTimeout(idled, 350);
+                                        x.domain([4, 8])
+                                    } else {
+                                        x.domain([x.invert(extent[0]), x.invert(extent[1])])
+                                        area.select(".brush").call(brush.move, null) // This remove the grey brush area as soon as the selection has been done
+                                    }
 
-            })
-    </script>
-    </div>
-    <div>
-        <div class="graph1">
-        <div id="my_dataviz2"></div>
-            <script>
-                var margin = { top: 10, right: 30, bottom: 30, left: 50 },
-                        width = 460 - margin.left - margin.right,
-                        height = 400 - margin.top - margin.bottom;
-                var svg = d3.select("#my_dataviz2")
-                        .append("svg")
-                        .attr("width", width + margin.left + margin.right)
-                        .attr("height", height + margin.top + margin.bottom)
-                        .append("g")
-                        .attr("transform",
-                            "translate(" + margin.left + "," + margin.top + ")");
-                d3.csv("./src/data.csv",
+                                    xAxis.transition().duration(1000).call(d3.axisBottom(x))
+                                    area
+                                        .select('.myArea')
+                                        .transition()
+                                        .duration(1000)
+                                        .attr("d", areaGenerator)
+                                }
+
+
+                                // svg.selectAll("myCircles")
+                                //     .data(data)
+                                //     .enter()
+                                //     .append("circle")
+                                //     .attr("fill", "red")
+                                //     .attr("stroke", "none")
+                                //     .attr("cx", function (d) { return x(d.date) })
+                                //     .attr("cy", function (d) { return y(d.deaths) })
+                                //     .attr("r", 3)
+
+
+
+                                svg1.on("dblclick", function () {
+                                    x.domain(d3.extent(data, function (d) { return d.date; }))
+                                    xAxis.transition().call(d3.axisBottom(x))
+                                    area
+                                        .select('.myArea')
+                                        .transition()
+                                        .attr("d", areaGenerator)
+                                });
+
+                            })
+                </script>
+                </div>
+            </div>
+                <div class="graph2">
+                    <div class="graph-title2">Daily testing and projected testing</div>
+                    <div id="my_dataviz2"></div>
+                    <script>
+                        var margin = { top: 10, right: 30, bottom: 30, left: 50 },
+                            width = 460 - margin.left - margin.right,
+                            height = 400 - margin.top - margin.bottom;
+                        var svg2 = d3.select("#my_dataviz2")
+                            .append("svg")
+                            .attr("width", width + margin.left + margin.right)
+                            .attr("height", height + margin.top + margin.bottom)
+                            .append("g")
+                            .attr("transform",
+                                "translate(" + margin.left + "," + margin.top + ")");
+                        d3.csv("./src/data.csv",
                         function (d) {
                             return { date: d3.timeParse("%Y-%m-%d")(d.date), tests: d.total_tests }
                         },
@@ -193,18 +217,18 @@
                             var x = d3.scaleTime()
                                 .domain(d3.extent(data, function (d) { return d.date; }))
                                 .range([0, width]);
-                            svg.append("g")
+                            svg2.append("g")
                                 .attr("transform", "translate(0," + (height + 5) + ")")
                                 .call(d3.axisBottom(x).ticks(5).tickSizeOuter(0));
 
                             var y = d3.scaleLinear()
                                 .domain(d3.extent(data, function (d) { return +d.tests; }))
                                 .range([height, 0]);
-                            svg.append("g")
+                            svg2.append("g")
                                 .attr("transform", "translate(-5,0)")
                                 .call(d3.axisLeft(y).tickSizeOuter(0));
 
-                            svg.append("path")
+                            svg2.append("path")
                                 .datum(data)
                                 .attr("fill", "#69b3a2")
                                 .attr("fill-opacity", .3)
@@ -215,7 +239,7 @@
                                     .y1(function (d) { return y(d.tests) })
                                 )
                             
-                            svg.append("path")
+                            svg2.append("path")
                                 .datum(data)
                                 .attr("fill", "none")
                                 .attr("stroke", "#69b3a2")
@@ -224,7 +248,7 @@
                                     .x(function (d) { return x(d.date) })
                                     .y(function (d) { return y(d.tests) })
                                 )
-                               svg.selectAll("myCircles")
+                               svg2.selectAll("myCircles")
                             .data(data)
                             .enter()
                             .append("circle")
@@ -234,107 +258,99 @@
                             .attr("cy", function (d) { return y(d.tests) })
                             .attr("r", 3)
 
-                    })
-
-                            
-
-            </script>
-        </div>
-        <div class="graph2">
-            <div id="my_dataviz3"></div>
-            <script>
-                var margin = { top: 10, right: 30, bottom: 30, left: 50 },
-                    width = 460 - margin.left - margin.right,
-                    height = 400 - margin.top - margin.bottom;
-                var svg = d3.select("#my_dataviz2")
-                    .append("svg")
-                    .attr("width", width + margin.left + margin.right)
-                    .attr("height", height + margin.top + margin.bottom)
-                    .append("g")
-                    .attr("transform",
-                        "translate(" + margin.left + "," + margin.top + ")");
-                d3.csv("./src/data.csv",
-                    function (d) {
+                        })
+                    </script>
+                </div>
+                <div class="graph3">
+                    <div class="graph-title2">Confirmed infections related to testing</div>
+                <div id="my_dataviz3"></div>
+                    <script>
+                        var margin = { top: 10, right: 30, bottom: 30, left: 50 },
+                            width = 460 - margin.left - margin.right,
+                            height = 400 - margin.top - margin.bottom;
+                        var svg3 = d3.select("#my_dataviz3")
+                            .append("svg")
+                            .attr("width", width + margin.left + margin.right)
+                            .attr("height", height + margin.top + margin.bottom)
+                            .append("g")
+                            .attr("transform",
+                            "translate(" + margin.left + "," + margin.top + ")");
+                        d3.csv("./src/data.csv",
+                        function (d) {
                         return { date: d3.timeParse("%Y-%m-%d")(d.date), infections: d.confirmed_infections }
-                    },
-                    function (data) {
-                        data = data.filter(function (d, i) { return i })
+                        },
+                        function (data) {
+                            data = data.filter(function (d, i) { return i })
 
-                        var x = d3.scaleTime()
-                            .domain(d3.extent(data, function (d) { return d.date; }))
-                            .range([0, width]);
-                        svg.append("g")
-                            .attr("transform", "translate(0," + (height + 5) + ")")
-                            .call(d3.axisBottom(x).ticks(5).tickSizeOuter(0));
+                            var x = d3.scaleTime()
+                                .domain(d3.extent(data, function (d) { return d.date; }))
+                                .range([0, width]);
+                            svg3.append("g")
+                                .attr("transform", "translate(0," + (height + 5) + ")")
+                                .call(d3.axisBottom(x).ticks(5).tickSizeOuter(0));
 
-                        var y = d3.scaleLinear()
-                            .domain(d3.extent(data, function (d) { return +d.infections; }))
-                            .range([height, 0]);
-                        svg.append("g")
-                            .attr("transform", "translate(-5,0)")
-                            .call(d3.axisLeft(y).tickSizeOuter(0));
+                            var y = d3.scaleLinear()
+                                .domain(d3.extent(data, function (d) { return +d.infections; }))
+                                .range([height, 0]);
+                            svg3.append("g")
+                                .attr("transform", "translate(-5,0)")
+                                .call(d3.axisLeft(y).tickSizeOuter(0));
 
-                        svg.append("path")
-                            .datum(data)
-                            .attr("fill", "#69b3a2")
-                            .attr("fill-opacity", .3)
-                            .attr("stroke", "none")
-                            .attr("d", d3.area()
-                                .x(function (d) { return x(d.date) })
-                                .y0(height)
-                                .y1(function (d) { return y(d.infections) })
-                            )
+                            svg3.append("path")
+                                .datum(data)
+                                .attr("fill", "#69b3a2")
+                                .attr("fill-opacity", .3)
+                                .attr("stroke", "none")
+                                .attr("d", d3.area()
+                                    .x(function (d) { return x(d.date) })
+                                    .y0(height)
+                                    .y1(function (d) { return y(d.infections) })
+                                )
 
-                        svg.append("path")
-                            .datum(data)
-                            .attr("fill", "none")
-                            .attr("stroke", "#69b3a2")
-                            .attr("stroke-width", 4)
-                            .attr("d", d3.line()
-                                .x(function (d) { return x(d.date) })
-                                .y(function (d) { return y(d.infections) })
-                            )
-                        svg.selectAll("myCircles")
-                            .data(data)
-                            .enter()
-                            .append("circle")
-                            .attr("fill", "red")
-                            .attr("stroke", "none")
-                            .attr("cx", function (d) { return x(d.date) })
-                            .attr("cy", function (d) { return y(d.infections) })
-                            .attr("r", 3)
+                            svg3.append("path")
+                                .datum(data)
+                                .attr("fill", "none")
+                                .attr("stroke", "#69b3a2")
+                                .attr("stroke-width", 4)
+                                .attr("d", d3.line()
+                                    .x(function (d) { return x(d.date) })
+                                    .y(function (d) { return y(d.infections) })
+                                )
+                            svg3.selectAll("myCircles")
+                                .data(data)
+                                .enter()
+                                .append("circle")
+                                .attr("fill", "red")
+                                .attr("stroke", "none")
+                                .attr("cx", function (d) { return x(d.date) })
+                                .attr("cy", function (d) { return y(d.infections) })
+                                .attr("r", 3)
 
-                    })
-
-
-
-            </script>
+                        })
+                    </script>
+               
             </div>
-    </div>
-    
-    
-    <div class="author">
-        <img src="src/images/headshot2.jpg" alt="">
-        <div class="author-info">
-            <p>Created by</p>
-            <a rel="noopener noreferrer" target="_blank" style="text-decoration: none" href="naziaislam80.github.io">
-                <span>Nazia Islam</span>
-            </a>
-            <div class="icons">
-                <a href="https://www.linkedin.com/in/nazia-islam-2374951a9/" rel="noopener noreferrer" target="_blank">
-                    <img src="src/images/linkedin.png" alt="">
+            
+                
+         <div class="author">
+            <div class="author-info">
+                <h2 class="title">Created by</h2>
+                <a rel="noopener noreferrer" target="_blank" style="text-decoration: none" href="https://naziaislam80.github.io/">
+                    <h3 class="name">Nazia Islam</h3>
                 </a>
-                <a href="https://github.com/Naziaislam80" rel="noopener noreferrer" target="_blank">
-                    <img src="src/images/github.png" alt="">
-                </a>
-                <a href="https://angel.co/u/nazia-islam" rel="noopener noreferrer" target="_blank">
-                    <img src="src/images/angellist.png" alt="">
-                </a>
+                <div class="icons">
+                    <a href="https://www.linkedin.com/in/nazia-islam-2374951a9/" rel="noopener noreferrer" target="_blank">
+                        <img src="src/images/linkedin.png" alt="" class="image">
+                    </a>
+                    <a href="https://github.com/Naziaislam80" rel="noopener noreferrer" target="_blank">
+                        <img src="src/images/github.png" alt="" class="image">
+                    </a>
+                    <a href="https://angel.co/u/nazia-islam" rel="noopener noreferrer" target="_blank">
+                        <img src="src/images/angellist.png" alt="" class="image">
+                    </a>
+                </div>
             </div>
-
-        </div>
-
-    </div>
+        </div> 
 </body>
 
 </html>
