@@ -28,7 +28,7 @@ align-self: center;
 
 .info-title {
     font-size: 80px;
-    background-color: lightblue;
+    background-color: white;
   align-self: center;
   font-family: Calisto MT;
   font-weight: bold;
@@ -223,7 +223,7 @@ body {
 
 .author-info {
     border: solid mediumaquamarine 5px;
-  box-shadow: 0 15px 30px mediumaquamarine;
+  box-shadow: 0 30px 40px mediumaquamarine;
    font-size: 1.5em;
   
   color: black;
