@@ -266,4 +266,6 @@ body {
     transform: scale(1.2);
   }
 
-  
+.popup {
+  font-weight: bold;
+}
