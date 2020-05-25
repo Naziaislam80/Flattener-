@@ -8,6 +8,8 @@ Flatten is an interactive data visualizations that depict the impact of social d
 
 ## Features
 Users can interact with Total deaths graph to see the impact social distancing had on decreasing the number of deaths
+![naz](https://user-images.githubusercontent.com/55370959/82834929-890c8600-9e90-11ea-9bc6-b4db0cf5f8ab.gif)
+
 
 Users can see how daily testing has affected rate of new infections on New York. 
 <img width="1440" alt="Screen Shot 2020-05-25 at 12 51 26 PM" src="https://user-images.githubusercontent.com/55370959/82831570-c53ae900-9e86-11ea-8e3c-b191d42cdf56.png">
