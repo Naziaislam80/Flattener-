@@ -6,6 +6,8 @@ Evaluating the efficacy of social distancing.
 
 Flatten is an interactive data visualizations that depict the impact of social distancing on infections/mortality and graphically represent New York's overall testing capacity.
 
+[Live Link](https://naziaislam80.github.io/Flattener-/)
+
 ## Features
 Users can interact with Total deaths graph to see the impact social distancing had on decreasing the number of deaths
 ![naz](https://user-images.githubusercontent.com/55370959/82834929-890c8600-9e90-11ea-9bc6-b4db0cf5f8ab.gif)
