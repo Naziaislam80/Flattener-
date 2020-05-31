@@ -1,50 +1,61 @@
-# Flatten
+<img width="427" alt="logo" src="https://user-images.githubusercontent.com/55370959/82830153-f5808880-9e82-11ea-9806-b07c0ab8fafb.png">
+
 ## Background and Overview 
-Evidence based methods to minimize the impact of COVID-19. 
-Evaluating the efficacy of workplace closures, mask usage, school closures and travel restrictions
+Flatten is an interactive data visualizations that depict the impact of social distancing on infections/mortality and graphically represent New York's overall testing capacity.
 
-Flatten is an interactive data visualization showing the efficacy of various preventative methods designed to reduce
-the spread of COVID-19. Gain a greater awareness of the various strategies employed and see the impact they have had. 
+[Live Link](https://naziaislam80.github.io/Flattener-/)
 
-## Functionality and MVPs
-In Flatten, users will be able to:
- * click on various datasets, such as workplace closures, mask usage, school closures and travel restrictions.
- * Gain knowledge on the efficacy of workplace closures, mask usage, school closures and travel restrictions.
- 
-In addition, this project will include:
- * data visualization of lives lost in NYC march - present 
- * data visualization of projected deaths if social distancing, workplace closures, mask usage, 
-   school closures and travel restrictions had taken place earlier. 
- 
- ## Wireframe
- <img width="1428" alt="Screen Shot 2020-04-26 at 10 59 50 PM" src="https://user-images.githubusercontent.com/55370959/80329914-b4f50700-8811-11ea-8336-21932710d9d1.png">
+## Features
+Users can interact with graph to see the impact social distancing had on decreasing mortality.
+![naz](https://user-images.githubusercontent.com/55370959/82834929-890c8600-9e90-11ea-9bc6-b4db0cf5f8ab.gif)
+
+
+Users can see how daily testing can help to reveal the rate of new infections in New York. 
+<img width="1440" alt="Screen Shot 2020-05-25 at 12 51 26 PM" src="https://user-images.githubusercontent.com/55370959/82831570-c53ae900-9e86-11ea-8e3c-b191d42cdf56.png">
+
+<img width="1440" alt="Screen Shot 2020-05-25 at 12 51 40 PM" src="https://user-images.githubusercontent.com/55370959/82831571-c704ac80-9e86-11ea-9dac-a2706c98ec5a.png">
 
 ## Technology 
 * D3.js
 * JavaScript
 * CSS
 * HTML
+* [IHME](http://www.healthdata.org)
 
-## Timeline 
-### APRIL 27
-- research data and d3.js 
-- initial frontend setup (splash and show page, skeleton CSS)
-- first push to heroku
- 
-### APRIL 28
-- Start working on visual assets
-- add data
+## Code Highlight 
+Implemented an update chart function so users can zoom in and change graph to see details along with a double click, so once users are done they can double click to return to the original graph. 
 
-### APRIL 29
-- 3D visualization
+```
+ function updateChart() {
+                                    extent = d3.event.selection
+                                    if (!extent) {
+                                        if (!idleTimeout) return idleTimeout = setTimeout(idled, 350);
+                                        x.domain([4, 8])
+                                    } else {
+                                        x.domain([x.invert(extent[0]), x.invert(extent[1])])
+                                        area.select(".brush").call(brush.move, null) 
+                                    }
 
-### APRIL 30
-- 3D visualization
-- styling 
+                                    xAxis.transition().duration(1000).call(d3.axisBottom(x))
+                                    area
+                                        .select('.myArea')
+                                        .transition()
+                                        .duration(1000)
+                                        .attr("d", areaGenerator)
+                                }
 
-### APRIL 31
-- styling 
-- readme
+
+                                svg1.on("dblclick", function () {
+                                    x.domain(d3.extent(data, function (d) { return d.date; }))
+                                    xAxis.transition().call(d3.axisBottom(x))
+                                    area
+                                        .select('.myArea')
+                                        .transition()
+                                        .attr("d", areaGenerator)
+                                });
+
+                            })
+  ```
 
  
 
