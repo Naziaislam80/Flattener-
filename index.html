@@ -15,6 +15,10 @@
 
     <!-- <link rel="stylesheet" href="./dist/main.css" /> -->
     <title>Flatten</title>
+    <meta property='og:title' content="Flatten" />
+    <meta property='og:image' content="flatten.jpg" />
+    <meta property='og:description' content="Data visualizations on the effects of social distancing" />
+    <meta property='og:url' content="https://naziaislam80.github.io/Flattener-/" />
     <script src="https://d3js.org/d3.v4.js"></script>
  
     <!-- <script src="https://d3js.org/d3.v4.js"></script>
@@ -131,17 +135,7 @@
                                     .attr("stroke", "black")
                                     .attr("stroke-width", 1)
                                     .attr("d", areaGenerator)
-                                // .attr("d", d3.area()
-                                //     .x(function (d) { return x(d.date) })
-                                //     .y0(height)
-                                //     .y1(function (d) { return y(d.deaths) })
-
-                                // )
-                                // .attr("d", d3.line()
-                                //         .x(function (d) { return x(d.date) })
-                                //         .y(function (d) { return y(d.deaths) })
-                                //     )
-                                
+                            
                                 area
                                     .append("g")
                                     .attr("class", "brush")
@@ -157,7 +151,7 @@
                                         x.domain([4, 8])
                                     } else {
                                         x.domain([x.invert(extent[0]), x.invert(extent[1])])
-                                        area.select(".brush").call(brush.move, null) // This remove the grey brush area as soon as the selection has been done
+                                        area.select(".brush").call(brush.move, null) 
                                     }
 
                                     xAxis.transition().duration(1000).call(d3.axisBottom(x))
@@ -167,18 +161,6 @@
                                         .duration(1000)
                                         .attr("d", areaGenerator)
                                 }
-
-
-                                // svg.selectAll("myCircles")
-                                //     .data(data)
-                                //     .enter()
-                                //     .append("circle")
-                                //     .attr("fill", "red")
-                                //     .attr("stroke", "none")
-                                //     .attr("cx", function (d) { return x(d.date) })
-                                //     .attr("cy", function (d) { return y(d.deaths) })
-                                //     .attr("r", 3)
-
 
 
                                 svg1.on("dblclick", function () {
