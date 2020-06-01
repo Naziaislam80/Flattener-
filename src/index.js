@@ -1,1 +1,1 @@
-import './css/splash.scss';
+// import './css/splash.scss';
